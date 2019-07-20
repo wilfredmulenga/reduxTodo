@@ -1,9 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const Todo = ({num, todo}) => {
+
+const Todo = ({ index, todo, completed, toggleTodo, dispatch }) => {
 	return(
-    <li key={num}>{ todo }</li>
+    // TODO: replace this dispatch with `mapDispatchToProps`
+    <li onClick={() => dispatch(toggleTodo(index))}
+    style={{ textDecoration: completed ? 'line-through' : null }}
+    key={index}>{ todo }</li>
 	)
 }
 
-export default Todo
+export default connect()(Todo)
